@@ -64,6 +64,17 @@ def about(subject):
 
     # BEGIN PROBLEM 2
     "*** YOUR CODE HERE ***"
+    def helper(word):
+        no_punc = remove_punctuation(word)
+        lst = no_punc.lower().split()
+        for goal in subject:
+            for item in lst:
+                if goal == item:
+                    return True
+        return False
+
+    return helper
+
     # END PROBLEM 2
 
 
@@ -94,6 +105,18 @@ def accuracy(typed, source):
     source_words = split(source)
     # BEGIN PROBLEM 3
     "*** YOUR CODE HERE ***"
+    correct = 0
+    for i in range(min(len(typed_words),len(source_words))):
+        if typed_words[i] == source_words[i]:
+            correct += 1
+    if typed_words == [] and source_words == []:
+        return 100.0
+    
+    elif typed_words == [] or source_words == []:
+        return 0.0
+    else:
+        return correct/len(typed_words)*100
+      
     # END PROBLEM 3
 
 
@@ -112,6 +135,8 @@ def wpm(typed, elapsed):
     assert elapsed > 0, "Elapsed time must be positive"
     # BEGIN PROBLEM 4
     "*** YOUR CODE HERE ***"
+    word = len(typed)/5
+    return word / elapsed *60
     # END PROBLEM 4
 
 
