@@ -24,3 +24,4 @@
 (define (no-repeats s) 
     (if (null? s) s 
         (cons (car s) (no-repeats (filter (lambda (x) (not (= x (car s)))) (cdr s))))))
+; 请记得lambda (x) 这个括号一定不要忘！
